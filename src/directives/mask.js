@@ -5,7 +5,7 @@
       return {
         restrict: 'A',
         require: 'ngModel',
-        compile: function($element, $attrs) { 
+        compile: function($element, $attrs) {
          if (!$attrs.mask || !$attrs.ngModel) {
             $log.info('Mask and ng-model attributes are required!');
             return;
@@ -137,6 +137,7 @@
                     if(value !== viewValueWithDivisors){
                       controller.$viewValue = angular.copy(viewValueWithDivisors);
                       controller.$render();
+                      setSelectionRange(viewValueWithDivisors.length);
                       // Not using $setViewValue so we don't clobber the model value and dirty the form
                       // without any kind of user interaction.
                     }
