@@ -138,7 +138,7 @@
 
                     // Update view and model values
                     if(value !== viewValueWithDivisors){
-                      controller.$viewValue = angular.copy(viewValueWithDivisors);
+                      controller.$setViewValue( angular.copy(viewValueWithDivisors), 'setViewValue');
                       controller.$render();
                       setSelectionRange(viewValueWithDivisors.length);
                       // Not using $setViewValue so we don't clobber the model value and dirty the form
@@ -181,7 +181,7 @@
                 // but before the browser renders
                 if(options.value) {
                   $scope.$evalAsync(function($scope) {
-                    controller.$viewValue = angular.copy(options.value);
+                    controller.$setViewValue( angular.copy(options.value), 'setViewValue');
                     controller.$render();
                     // Not using $setViewValue so we don't clobber the model value and dirty the form
                     // without any kind of user interaction.
